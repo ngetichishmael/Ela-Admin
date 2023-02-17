@@ -76,9 +76,18 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                            <div class="col-12">
+                                @if (Route::has('login'))
+                                    <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
+                                        <a href="{{ route('login') }}">
+                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
+                            {{-- <div class="mb-3">
+                                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                            </div> --}}
                         </form>
                     </div>
                 </div>
