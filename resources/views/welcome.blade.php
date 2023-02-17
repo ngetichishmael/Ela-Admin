@@ -28,7 +28,7 @@
 
 @section('content')
     <div class="bg-black h-100">
-        <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="flex-wrap sufee-login d-flex align-content-center">
             <div class="container">
                 <div class="login-content">
                     <div class="login-logo">
@@ -49,6 +49,7 @@
                     <div class="login-form">
                         <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
                             @csrf
+                            @method('POST')
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email or Username</label>
                                 <input type="email" class="form-control" id="email" name="email"
@@ -65,7 +66,7 @@
                                     <input type="password" id="password" class="form-control" name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                         aria-describedby="password" required />
-                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                                    <span class="cursor-pointer input-group-text"><i class="ti ti-eye-off"></i></span>
                                 </div>
                             </div>
                             <div class="mb-3">
