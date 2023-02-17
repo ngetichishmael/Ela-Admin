@@ -1,0 +1,52 @@
+{
+  "menu": [
+    {
+      "navheader": "Dashboard",
+      "slug": ""
+    },
+    {
+      "url": "/dashboard",
+      "name": "Home",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "pages-home"
+    },
+    {
+      "name": "Customers",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "Customers",
+      "submenu": [
+        {
+          "url": "customers",
+          "name": "Customers",
+          "icon": "menu-icon tf-icons ti ti-user",
+          "slug": "customers"
+        },
+        {
+          "url": "customers/create",
+          "name": "Add New",
+          "icon": "menu-icon tf-icons ti ti-user",
+          "slug": "customers"
+        }
+      ]
+    },
+    {
+      "name": "Field Workers",
+      "icon": "menu-icon tf-icons ti ti-user",
+      "slug": "Customers",
+      "submenu": [
+        {
+          "url": "field-workers",
+          "name": "Field Workers",
+          "icon": "menu-icon tf-icons ti ti-user",
+          "slug": "field-workers"
+        },
+        {
+          "url": "field-workers/create ",
+          "name": "Add New",
+          "icon": "menu-icon tf-icons ti ti-user",
+          "slug": "field-workers"
+        }
+      ]
+    }
+  ]
+}
