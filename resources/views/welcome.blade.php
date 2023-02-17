@@ -77,10 +77,10 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                @if (Route::has('login'))
+                                @if (Route::has('elaadmin'))
                                     <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
-                                        <a href="{{ route('login') }}">
-                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                        <a href="{{ route('elaadmin') }}">
+                                            <button class="btn btn-primary w-100" type="submit">Sign In</button>
                                         </a>
                                     </div>
                                 @endif
