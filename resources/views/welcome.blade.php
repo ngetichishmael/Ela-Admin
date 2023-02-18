@@ -47,7 +47,7 @@
                         </span>
                     @endif
                     <div class="login-form">
-                        <form id="formAuthentication" class="mb-3" action="{{ route('elaadmin') }}" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="/login" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email or Username</label>
@@ -77,13 +77,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                @if (Route::has('elaadmin'))
-                                    <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
-                                        <a href="{{ route('elaadmin') }}">
-                                            <button class="btn btn-primary w-100" type="submit">Sign In</button>
-                                        </a>
-                                    </div>
-                                @endif
+                                <button class="btn btn-primary w-100" type="submit">Sign In</button>
                             </div>
                             {{-- <div class="mb-3">
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
