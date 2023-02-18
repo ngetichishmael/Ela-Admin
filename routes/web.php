@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  $pageConfigs = ['myLayout' => 'blank'];
+  return view('welcome', ['pageConfigs' => $pageConfigs]);
 });
 
 Route::get('/dashboard', function () {
