@@ -49,19 +49,27 @@
                         <th>Phone Number</th>
                         <th>Id Number</th>
                         <th>Meter Number</th>
-                        <th>Current Meter Number</th>
+                        <th>Previous Reading</th>
+                        <th>Current Reading</th>
+                        <th>View Customer</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($customers as $customer)
                         <tr>
-
                             <th scope="row">{{ $customer->id }}</th>
                             <td>{{ $customer->name }}</td>
                             <td>{{ $customer->phone_number }}</td>
                             <td>{{ $customer->id_number }}</td>
                             <td>{{ $customer->meter_number }}</td>
+                            <td>{{ $customer->LatestRecord->previous_reading }}</td>
                             <td>{{ $customer->current_meter_reading }}</td>
+                            <td><a class="btn btn-primary-success w-100 btn-success"
+                                    href="{{ route('customers.show', ['customer' => $customer->id]) }}">
+                                    Profile
+                                </a>
+                            </td>
+
                         </tr>
 
                     @empty
