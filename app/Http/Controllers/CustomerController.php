@@ -145,23 +145,24 @@ class CustomerController extends Controller
   {
     $latest = MeterReading::where('customer_id', $customer->id)->orderBy('id', 'DESC')->first();
     $customer->update($request->validated());
-    $meter = MeterReading::create([
+    MeterReading::create([
       'customer_id' => $customer->id,
       'previous_reading' => $latest->current_reading,
       'current_reading' => $request->current_meter_reading,
+      'amount' => $request->amount
     ]);
 
     $LastRecord = MeterReading::where('customer_id', $customer->id)->orderBy('id', 'desc')->first();
     $billing = (float)$LastRecord->current_reading - (float)$LastRecord->previous_reading;
     $names = explode(' ', $request->name);
-    $amount = $this->amountPaid($billing, $request->type);
+    $amount = $this->amountPaid($request->amount, $request->type);
     $message1 = 'Welcome to Nyakanja co-op society. Kindly pay all your Bills through our Paybill 247247 Acc 714433#' . $customer->meter_number;
     $message2 = 'Dear' . $names[0] . ', Your current units is ' . $request->current_meter_reading . '. Current bill at ' . Carbon::now()->format('Y-m-d') . ' is Ksh.' . $amount . '  due ' . Carbon::now()->subDays(7)->format('Y-m-d') . '.Paybill 247247 Acc 714433#' . $customer->meter_number . '. Enquiries call 0726949264';
-    MeterReading::whereId($meter->id)->update(
-      [
-        'amount' => $amount,
-      ]
-    );
+    // MeterReading::whereId($meter->id)->update(
+    //   [
+    //     'amount' => $amount,
+    //   ]
+    // );
     $username = 'Nyakaja'; // use 'sandbox' for development in the test environment
     $apiKey   = '077d11d406762eb0c07b8fdda01cf69f6676482be521ead7a4bc20a4c18b4502'; // use your sandbox app API key for development in the test environment
     $AT       = new AfricasTalking($username, $apiKey);
