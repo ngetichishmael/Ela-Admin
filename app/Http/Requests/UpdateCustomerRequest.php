@@ -29,6 +29,7 @@ class UpdateCustomerRequest extends FormRequest
       'meter_number' => 'required',
       'id_number' => 'required|numeric',
       'current_meter_reading' => 'required',
+      'type' => 'required|numeric'
     ];
   }
   /**
@@ -46,6 +47,7 @@ class UpdateCustomerRequest extends FormRequest
       'id_number.required' => 'A id number is required',
       'id_number.numeric' => 'A id number must be a number',
       'current_meter_reading.required' => 'A message is required',
+      'type.required' => 'A type is required',
     ];
   }
 }

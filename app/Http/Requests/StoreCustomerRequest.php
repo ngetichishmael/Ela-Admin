@@ -29,6 +29,8 @@ class StoreCustomerRequest extends FormRequest
       'meter_number' => 'required',
       'id_number' => 'required|numeric',
       'current_meter_reading' => 'required',
+      'type' => 'required|numeric',
+      'amount' => 'required|numeric',
     ];
   }
   /**
@@ -45,7 +47,10 @@ class StoreCustomerRequest extends FormRequest
       'meter_number.required' => 'A meter number is required',
       'id_number.required' => 'A id number is required',
       'id_number.numeric' => 'A id number must be a number',
-      'current_meter_reading.required' => 'A message is required',
+      'amount.required' => 'A amount is required',
+      'amount.numeric' => 'A amount must be a number',
+      'current_meter_reading.required' => 'A current meter reading is required',
+      'type.required' => 'A type is required',
     ];
   }
 }

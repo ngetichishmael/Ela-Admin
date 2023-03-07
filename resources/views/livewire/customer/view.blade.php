@@ -35,6 +35,18 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="name" class="control-label mb-1">Customer Name</label>
+                                                <input id="name" name="type34" type="text" class="form-control"
+                                                    aria-required="true" aria-invalid="false"
+                                                    value="{{ $customer->type == 1 ? 'Ordinary' : 'Organization/Institution' }}"
+                                                    readonly>
+                                                <input id="name" name="type" type="text" class="form-control"
+                                                    aria-required="true" aria-invalid="false" value="{{ $customer->type }}"
+                                                    placeholder="{{ $customer->type === 1 ? 'Ordinary' : 'Organization/Institution' }}"
+                                                    readonly hidden>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="name" class="control-label mb-1">Customer Name</label>
                                                 <input id="name" name="name" type="text" class="form-control"
                                                     aria-required="true" aria-invalid="false" value="{{ $customer->name }}"
                                                     placeholder="{{ $customer->name }}" readonly>
@@ -88,14 +100,25 @@
                                                             value="{{ $customer->current_meter_reading }}"
                                                             placeholder="{{ $customer->current_meter_reading }}">
                                                         <div class="input-group-addon">
-                                                            <span class="fa fa-question-circle fa-lg" data-toggle="popover"
-                                                                data-container="body" data-html="true"
-                                                                data-title="Security Code"
+                                                            <span class="fa fa-question-circle fa-lg"
+                                                                data-toggle="popover" data-container="body"
+                                                                data-html="true" data-title="Security Code"
                                                                 data-content="<div class='text-center one-card'>The 3 digit code on back of the card..<div class='visa-mc-cvc-preview'></div>
                                                                 data-trigger="hover">
                                                             </span>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="form-group has-success">
+                                                    <label for="amount" class="control-label mb-1">Amount</label>
+                                                    <input id="amount" name="amount" type="number"
+                                                        inputmode="numeric" pattern="\d*"
+                                                        class="form-control cc-name valid" data-val="true"
+                                                        data-val-required="Please enter the amount" autocomplete="amount"
+                                                        aria-required="true" aria-invalid="false"
+                                                        aria-describedby="amount" placeholder="amount" required>
+                                                    <span class="help-block field-validation-valid"
+                                                        data-valmsg-for="amount" data-valmsg-replace="true"></span>
                                                 </div>
                                             </div>
                                             <div class="col-12 mt-2">
