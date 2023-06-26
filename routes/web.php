@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BulkSMSController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FieldWorkerController;
 use App\Http\Controllers\ProfileController;
@@ -62,6 +63,15 @@ Route::middleware('auth')->group(function () {
     'destroy' => 'field-workers.destroy',
     'create' => 'field-workers.create',
     'store' => 'field-workers.store',
+  ]);
+  Route::resource('bulk-sms', BulkSMSController::class)->names([
+    'index' => 'bulk-sms',
+    'show' => 'bulk-sms.show',
+    'edit' => 'bulk-sms.edit',
+    'update' => 'bulk-sms.update',
+    'destroy' => 'bulk-sms.destroy',
+    'create' => 'bulk-sms.create',
+    'store' => 'bulk-sms.store',
   ]);
 });
 

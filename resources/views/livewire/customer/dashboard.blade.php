@@ -32,8 +32,12 @@
                 </div>
             </div>
             <div class="col-md-2">
-
-
+                <div class="form-group">
+                    <label for="selectSmall">Send Bulk SMS</label>
+                    <a class="btn btn-primary-success w-100 btn-success" href="{{ route('bulk-sms.create') }}">
+                        NOTIFICATION
+                    </a>
+                </div>
             </div>
         </div>
     </div>
