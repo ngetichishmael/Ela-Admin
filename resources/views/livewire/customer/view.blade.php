@@ -17,12 +17,10 @@
                                 <!-- Credit Card -->
                                 <div id="pay-invoice">
                                     <div class="card-body">
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
+                                        @if (\Session::has('success'))
+                                            <div class="alert alert-success">
                                                 <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
+                                                    <li>{!! \Session::get('success') !!}</li>
                                                 </ul>
                                             </div>
                                         @endif
@@ -33,17 +31,21 @@
                                             @method('PUT')
                                             <div class="form-group text-center">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="name" class="control-label mb-1">Customer Name</label>
-                                                <input id="name" name="type34" type="text" class="form-control"
-                                                    aria-required="true" aria-invalid="false"
-                                                    value="{{ $customer->type == 1 ? 'Ordinary' : 'Organization/Institution' }}"
-                                                    readonly>
-                                                <input id="name" name="type" type="text" class="form-control"
-                                                    aria-required="true" aria-invalid="false" value="{{ $customer->type }}"
-                                                    placeholder="{{ $customer->type === 1 ? 'Ordinary' : 'Organization/Institution' }}"
-                                                    readonly hidden>
+
+                                            <div class="form-group" style="gap:20">
+                                                <label for="name" class="control-label mb-1">Customer Type </label>
+
+                                                <select data-placeholder="Choose type ..."
+                                                    class="standardSelect form-control" tabindex="1" name="type"
+                                                    required>
+                                                    <option value="1" label="Ordinary"
+                                                        @if ($customer->type == 1) selected @endif>Ordinary</option>
+                                                    <option value="2"
+                                                        @if ($customer->type == 2) selected @endif>
+                                                        Organization/Institution</option>
+                                                </select>
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label for="name" class="control-label mb-1">Customer Name</label>
@@ -147,18 +149,20 @@
                                                 <thead class="thead-light">
                                                     <tr>
                                                         <th>ID</th>
+                                                        <th>Amount</th>
                                                         <th>Previous</th>
-                                                        <th>Current Read</th>
+                                                        <th>Current</th>
                                                         <th>Date</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @forelse ($customer->MeterReading as $customer)
+                                                    @forelse ($customer->MeterReading as $key=>$customer)
                                                         <tr>
-                                                            <th scope="row">{{ $customer->id }}</th>
+                                                            <th scope="row">{{ $key + 1 }}</th>
+                                                            <td>{{ $customer->amount ?? 0 }}</td>
                                                             <td>{{ $customer->previous_reading }}</td>
                                                             <td>{{ $customer->current_reading }}</td>
-                                                            <td>{{ $customer->updated_at }}</td>
+                                                            <td>{{ $customer->updated_at->format('d-m-Y') }}</td>
                                                         </tr>
                                                     @empty
                                                         <tr>
@@ -166,6 +170,7 @@
                                                                 Available Data</td>
                                                         </tr>
                                                     @endforelse
+
                                                 </tbody>
                                             </table>
                                         </div>
